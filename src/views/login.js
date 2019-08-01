@@ -1,10 +1,15 @@
 import React from 'react';
+
+// firebase authentication
 import firebase from '../firebaseConfig';
-import "firebase/auth";
+
+
+// material ui
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
+import { makeStyles } from '@material-ui/core/styles';
 
-
+// login screen
 export default class Login extends React.Component {
 
 	constructor(props){
@@ -41,26 +46,25 @@ export default class Login extends React.Component {
 
 	}
 
-	signOut(){
-		firebase.auth().signOut().then(function() {
-		  // Sign-out successful.
-		}).catch(function(error) {
-		  // An error happened.
-		});
-	}
-
 	render(){
 		return (
 			<React.Fragment>
       			<CssBaseline />
-      			<Container maxWidth="sm">
+      			<Container className={classes.container} maxWidth="sm">
         			<div>
 						<h1>Login Page</h1>
 						<button onClick={() => this.login()}>login</button>
-						<button onClick={() => this.signOut()}>sign out</button>
 					</div>
       			</Container>
    			</React.Fragment>
 		)
 	}
 }
+
+const classes = makeStyles(theme => ({
+
+  container: {
+  	height: '100vh',
+  }
+
+}));
